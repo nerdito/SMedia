@@ -45,6 +45,7 @@ fun PinScreen(
     var confirmPin by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var isSettingPin by remember { mutableStateOf(!isPinSet) }
+    var step by remember { mutableStateOf(0) } // 0 = enter PIN, 1 = confirm PIN
 
     LaunchedEffect(pin, confirmPin) {
         errorMessage = null
@@ -58,20 +59,24 @@ fun PinScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = if (isSettingPin) "Set Your PIN" else "Enter PIN",
+            text = when {
+                isSettingPin && step == 0 -> "Set Your PIN"
+                isSettingPin && step == 1 -> "Confirm Your PIN"
+                else -> "Enter PIN"
+            },
             style = MaterialTheme.typography.headlineMedium
         )
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        val currentPin = if (isSettingPin) confirmPin else pin
+        val currentPin = if (isSettingPin && step == 1) confirmPin else pin
 
         OutlinedTextField(
             value = currentPin,
             onValueChange = { value ->
                 if (value.length <= 4 && value.all { it.isDigit() }) {
                     if (isSettingPin) {
-                        if (pin.isEmpty()) {
+                        if (step == 0) {
                             pin = value
                         } else {
                             confirmPin = value
@@ -81,7 +86,7 @@ fun PinScreen(
                     }
                 }
             },
-            label = { Text(if (isSettingPin && pin.isNotEmpty()) "Confirm PIN" else "Enter 4-digit PIN") },
+            label = { Text(if (isSettingPin && step == 1) "Confirm 4-digit PIN" else "Enter 4-digit PIN") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
             visualTransformation = PasswordVisualTransformation(),
             singleLine = true,
@@ -90,9 +95,17 @@ fun PinScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        if (isSettingPin && pin.isNotEmpty()) {
+        if (isSettingPin && step == 0 && pin.isNotEmpty()) {
             Text(
-                text = if (confirmPin.isNotEmpty()) "Confirm your PIN" else "Re-enter to confirm",
+                text = "Enter a 4-digit PIN",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+
+        if (isSettingPin && step == 1 && confirmPin.isNotEmpty()) {
+            Text(
+                text = "Re-enter to confirm",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -113,7 +126,6 @@ fun PinScreen(
             onClick = {
                 when {
                     !isSettingPin -> {
-                        // Verify PIN
                         if (pin.length == 4) {
                             val isValid = onPinVerified(pin)
                             if (isValid) {
@@ -126,24 +138,27 @@ fun PinScreen(
                             errorMessage = "PIN must be 4 digits"
                         }
                     }
-                    pin.isEmpty() -> {
-                        errorMessage = "Please enter a PIN"
+                    step == 0 -> {
+                        if (pin.length == 4) {
+                            step = 1
+                        } else {
+                            errorMessage = "PIN must be 4 digits"
+                        }
                     }
-                    pin.length != 4 -> {
-                        errorMessage = "PIN must be 4 digits"
-                    }
-                    confirmPin.isEmpty() -> {
-                        // Move to confirmation
-                        confirmPin = ""
-                    }
-                    pin == confirmPin -> {
-                        onPinSet(pin)
-                        onSuccess()
-                    }
-                    else -> {
-                        errorMessage = "PINs do not match"
-                        pin = ""
-                        confirmPin = ""
+                    step == 1 -> {
+                        if (confirmPin.length == 4) {
+                            if (pin == confirmPin) {
+                                onPinSet(pin)
+                                onSuccess()
+                            } else {
+                                errorMessage = "PINs do not match"
+                                pin = ""
+                                confirmPin = ""
+                                step = 0
+                            }
+                        } else {
+                            errorMessage = "PIN must be 4 digits"
+                        }
                     }
                 }
             },
@@ -152,7 +167,7 @@ fun PinScreen(
             Text(
                 text = when {
                     !isSettingPin -> "Verify"
-                    confirmPin.isEmpty() -> "Continue"
+                    step == 0 -> "Continue"
                     else -> "Set PIN"
                 }
             )
@@ -163,6 +178,7 @@ fun PinScreen(
             Button(
                 onClick = {
                     isSettingPin = true
+                    step = 0
                     pin = ""
                     confirmPin = ""
                     errorMessage = null
