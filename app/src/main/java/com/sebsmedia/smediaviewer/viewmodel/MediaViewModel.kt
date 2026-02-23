@@ -32,15 +32,13 @@ class MediaViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         loadSelectedFolder()
+        loadVideos()
     }
 
     private fun loadSelectedFolder() {
         viewModelScope.launch {
             settingsManager.selectedFolderUri.collect { uriString ->
                 _selectedFolderUri.value = uriString?.let { Uri.parse(it) }
-                if (_selectedFolderUri.value != null) {
-                    loadVideos()
-                }
             }
         }
     }
