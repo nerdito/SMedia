@@ -1,5 +1,6 @@
 package com.sebsmedia.mediaviewer
 
+import android.app.Application
 import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -17,6 +18,8 @@ import com.sebsmedia.mediaviewer.ui.screens.SettingsScreen
 import com.sebsmedia.mediaviewer.ui.screens.VideoPlayerScreen
 import com.sebsmedia.mediaviewer.viewmodel.MediaViewModel
 import com.sebsmedia.mediaviewer.viewmodel.SettingsViewModel
+
+class App : Application()
 
 sealed class Screen(val route: String) {
     object Main : Screen("main")
