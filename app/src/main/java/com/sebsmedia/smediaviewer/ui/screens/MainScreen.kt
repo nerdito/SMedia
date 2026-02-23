@@ -1,4 +1,4 @@
-package com.sebsmedia.mediaviewer.ui.screens
+package com.sebsmedia.smediaviewer.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,8 +25,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.sebsmedia.mediaviewer.data.model.VideoFile
-import com.sebsmedia.mediaviewer.ui.components.VideoListItem
+import com.sebsmedia.smediaviewer.data.model.VideoFile
+import com.sebsmedia.smediaviewer.ui.components.VideoListItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

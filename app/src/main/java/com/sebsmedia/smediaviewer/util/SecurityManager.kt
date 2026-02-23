@@ -1,4 +1,4 @@
-package com.sebsmedia.mediaviewer.util
+package com.sebsmedia.smediaviewer.util
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -1,4 +1,4 @@
-package com.sebsmedia.mediaviewer.ui.theme
+package com.sebsmedia.smediaviewer.ui.theme
 
 import android.app.Activity
 import android.os.Build

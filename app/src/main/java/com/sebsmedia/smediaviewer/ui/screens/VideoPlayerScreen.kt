@@ -1,4 +1,4 @@
-package com.sebsmedia.mediaviewer.ui.screens
+package com.sebsmedia.smediaviewer.ui.screens
 
 import android.net.Uri
 import androidx.compose.foundation.background

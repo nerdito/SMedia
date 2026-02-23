@@ -1,4 +1,4 @@
-package com.sebsmedia.mediaviewer.ui.theme
+package com.sebsmedia.smediaviewer.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

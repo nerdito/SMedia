@@ -1,11 +1,11 @@
-package com.sebsmedia.mediaviewer.viewmodel
+package com.sebsmedia.smediaviewer.viewmodel
 
 import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.sebsmedia.mediaviewer.util.SecurityManager
-import com.sebsmedia.mediaviewer.util.SettingsManager
+import com.sebsmedia.smediaviewer.util.SecurityManager
+import com.sebsmedia.smediaviewer.util.SettingsManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

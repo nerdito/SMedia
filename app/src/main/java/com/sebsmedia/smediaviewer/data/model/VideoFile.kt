@@ -1,4 +1,4 @@
-package com.sebsmedia.mediaviewer.data.model
+package com.sebsmedia.smediaviewer.data.model
 
 import android.net.Uri
 

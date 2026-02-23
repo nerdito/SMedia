@@ -1,4 +1,4 @@
-package com.sebsmedia.mediaviewer.ui.components
+package com.sebsmedia.smediaviewer.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -17,7 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.sebsmedia.mediaviewer.data.model.VideoFile
+import com.sebsmedia.smediaviewer.data.model.VideoFile
 
 @Composable
 fun VideoListItem(

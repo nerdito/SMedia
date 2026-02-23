@@ -1,10 +1,10 @@
-package com.sebsmedia.mediaviewer.data.repository
+package com.sebsmedia.smediaviewer.data.repository
 
 import android.content.ContentUris
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
-import com.sebsmedia.mediaviewer.data.model.VideoFile
+import com.sebsmedia.smediaviewer.data.model.VideoFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

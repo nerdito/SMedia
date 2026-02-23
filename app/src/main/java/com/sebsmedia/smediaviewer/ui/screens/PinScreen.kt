@@ -1,4 +1,4 @@
-package com.sebsmedia.mediaviewer.ui.screens
+package com.sebsmedia.smediaviewer.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

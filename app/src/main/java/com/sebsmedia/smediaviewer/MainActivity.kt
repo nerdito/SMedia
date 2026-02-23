@@ -1,4 +1,4 @@
-package com.sebsmedia.mediaviewer
+package com.sebsmedia.smediaviewer
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -21,13 +21,13 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.sebsmedia.mediaviewer.ui.screens.MainScreen
-import com.sebsmedia.mediaviewer.ui.screens.PinScreen
-import com.sebsmedia.mediaviewer.ui.screens.SettingsScreen
-import com.sebsmedia.mediaviewer.ui.screens.VideoPlayerScreen
-import com.sebsmedia.mediaviewer.ui.theme.MediaViewerTheme
-import com.sebsmedia.mediaviewer.viewmodel.MediaViewModel
-import com.sebsmedia.mediaviewer.viewmodel.SettingsViewModel
+import com.sebsmedia.smediaviewer.ui.screens.MainScreen
+import com.sebsmedia.smediaviewer.ui.screens.PinScreen
+import com.sebsmedia.smediaviewer.ui.screens.SettingsScreen
+import com.sebsmedia.smediaviewer.ui.screens.VideoPlayerScreen
+import com.sebsmedia.smediaviewer.ui.theme.MediaViewerTheme
+import com.sebsmedia.smediaviewer.viewmodel.MediaViewModel
+import com.sebsmedia.smediaviewer.viewmodel.SettingsViewModel
 
 class MainActivity : ComponentActivity() {
 
