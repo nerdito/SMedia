@@ -2,12 +2,17 @@ package com.sebsmedia.smediaviewer
 
 import android.app.Application
 import android.net.Uri
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,6 +21,7 @@ import com.sebsmedia.smediaviewer.ui.screens.MainScreen
 import com.sebsmedia.smediaviewer.ui.screens.PinScreen
 import com.sebsmedia.smediaviewer.ui.screens.SettingsScreen
 import com.sebsmedia.smediaviewer.ui.screens.VideoPlayerScreen
+import com.sebsmedia.smediaviewer.ui.theme.MediaViewerTheme
 import com.sebsmedia.smediaviewer.viewmodel.MediaViewModel
 import com.sebsmedia.smediaviewer.viewmodel.SettingsViewModel
 
@@ -46,6 +52,12 @@ fun MediaViewerApp() {
     var pendingRoute by remember { mutableStateOf<String?>(null) }
     var showPinForSettings by remember { mutableStateOf(false) }
     var showPinForChangePin by remember { mutableStateOf(false) }
+
+    LaunchedEffect(showPinForSettings) {
+        if (showPinForSettings) {
+            navController.navigate(Screen.Pin.route)
+        }
+    }
 
     NavHost(
         navController = navController,

@@ -47,6 +47,15 @@ fun PinScreen(
     var isSettingPin by remember { mutableStateOf(!isPinSet) }
     var step by remember { mutableStateOf(0) } // 0 = enter PIN, 1 = confirm PIN
 
+    LaunchedEffect(isPinSet) {
+        isSettingPin = !isPinSet
+        if (isPinSet) {
+            step = 0
+            pin = ""
+            confirmPin = ""
+        }
+    }
+
     LaunchedEffect(pin, confirmPin) {
         errorMessage = null
     }
@@ -140,6 +149,7 @@ fun PinScreen(
                     }
                     step == 0 -> {
                         if (pin.length == 4) {
+                            confirmPin = ""  // Clear confirm PIN field
                             step = 1
                         } else {
                             errorMessage = "PIN must be 4 digits"
