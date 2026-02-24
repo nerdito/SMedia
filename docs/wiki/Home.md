@@ -23,3 +23,11 @@ A simple Android application for viewing video files from a user-selected folder
 - Android API 26+ (Android 8.0 Oreo)
 - Android SDK 35
 - Java 17
+
+## Screenshots
+
+| Screen | Description |
+|--------|-------------|
+| ![PIN Screen](screenshot_pin.png) | PIN entry screen - required to access settings |
+| ![Main Screen](screenshot_main.png) | Main video library - browse and play videos |
+| ![Home Screen](screenshot_home.png) | Home screen with no folder selected |
