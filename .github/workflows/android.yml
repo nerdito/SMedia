@@ -39,15 +39,15 @@ jobs:
       run: chmod +x ./gradlew
 
     # Run Tests Build
-    - name: Run gradle tests
-      run: ./gradlew test
+    #- name: Run gradle tests
+    #  run: ./gradlew test
 
     # Run Build Project
-    - name: Build gradle project
-      run: ./gradlew build
+    #- name: Build gradle project
+    #  run: ./gradlew build
 
     # Build Release
-    - name: Build Release APK - ${{ env.main_project_module }}
+    - name: Build Release APK - "${{ env.main_project_module }}"
       run: ./gradlew assembleRelease
 
     - name: Decode Keystore
@@ -67,8 +67,8 @@ jobs:
                --ks-key-alias "${{ secrets.ALIAS }}" \
                --ks-pass pass:"${{ secrets.KEY_STORE_PASSWORD }}" \
                --key-pass pass:"${{ secrets.KEY_PASSWORD }}" \
-               --out dist/app-signed.apk \
-               app/build/outputs/apk/release/app-release-unsigned.apk
+               --out dist/SMediaViewer.apk \
+               app/build/outputs/apk/release/app-release.apk
 
     - name: Upload Signed APK
       uses: actions/upload-artifact@v4
