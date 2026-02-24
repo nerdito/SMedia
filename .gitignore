@@ -3,6 +3,9 @@
 *.ap_
 *.aab
 
+# Allow APKs in dist/ folder
+!dist/*.apk
+
 # Files for the ART/Dalvik VM
 *.dex
 
